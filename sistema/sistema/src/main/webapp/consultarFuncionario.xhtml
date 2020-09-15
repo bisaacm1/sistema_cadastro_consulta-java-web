@@ -1,0 +1,125 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="corpo">
+		<title>Consulta de Funcionarios</title>
+
+		<h:form>
+
+			<p:messages id="messages" />
+			<p:tabView>
+
+				<p:tab title="Listagem de Funcionarios">
+
+					<h:panelGrid columns="1">
+
+						<p:dataTable id="tabelaFuncionarios"
+							value="#{funcionarioBacking.listaFuncionario}" var="funcionario"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+							paginator="true" rows="5" lazy="true"
+							emptyMessage="Nenhum Registro Encontrado">
+
+							<f:facet name="{Exporters}">
+
+								<div style="float: right; padding-top: 5px;">
+
+									<h:commandLink id="excel">
+										<p:graphicImage name="/demo/images/xlsx.png" />
+										<p:dataExporter type="xls" target="tabelaFuncionarios"
+											fileName="listaFuncionarios" />
+									</h:commandLink>
+
+									<h:commandLink id="pdf">
+										<p:graphicImage name="/demo/images/pdf.png" />
+										<p:dataExporter type="pdf" target="tabelaFuncionarios"
+											fileName="listaFuncionarios" />
+									</h:commandLink>
+
+									<h:commandLink id="csv">
+										<p:graphicImage name="/demo/images/csv.png" />
+										<p:dataExporter type="csv" target="tabelaFuncionarios"
+											fileName="listaFuncionarios" />
+									</h:commandLink>
+
+									<h:commandLink id="xml">
+										<p:graphicImage name="/demo/images/xml.png" />
+										<p:dataExporter type="xml" target="tabelaFuncionarios"
+											fileName="listaFuncionarios" />
+									</h:commandLink>
+
+
+								</div>
+
+							</f:facet>
+
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Nome" />
+								</f:facet>
+								<h:outputText value="#{funcionario.nome}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Telefone" />
+								</f:facet>
+								<h:outputText value="#{funcionario.telefone}" />
+							</p:column>
+							
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="celular" />
+								</f:facet>
+								<h:outputText value="#{funcionario.celular}" />
+							</p:column>
+
+							<p:column>
+								<f:facet name="header">
+									<h:outputText value="Email" />
+								</f:facet>
+								<h:outputText value="#{funcionario.email}" />
+							</p:column>
+							
+					
+
+<!-- 							<p:column> -->
+<!-- 								<p:commandButton action="#" value="Alterar" /> -->
+<!-- 								<f:setPropertyActionListener value="#{funcionario}" -->
+<!-- 									target="#{funcionarioBacking.funcionarioSelecionado}" /> -->
+<!-- 							</p:column> -->
+
+
+				
+							<p:column headerText="EXCLUIR" style="text-align: center">
+								<h:commandLink action="#{funcionarioBacking.excluir}"
+									value="Excluir">
+									<f:setPropertyActionListener
+										target="#{funcionarioBacking.funcionarioSelecionado}" value="#{funcionario}" />
+								</h:commandLink>
+							</p:column>
+							
+							<p:column headerText="ALTERAR" style="text-align: center">
+								<h:commandLink action="#{funcionarioBacking.alterarFuncionario}"
+									value="Alterar">
+									<f:setPropertyActionListener
+										target="#{funcionarioBacking.funcionarioSelecionado}" value="#{funcionario}" />
+								</h:commandLink>
+							</p:column>
+							
+						</p:dataTable>
+
+					</h:panelGrid>
+
+				</p:tab>
+
+			</p:tabView>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>

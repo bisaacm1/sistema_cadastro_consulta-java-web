@@ -1,0 +1,182 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="corpo">
+		<title>Cadastro de clientes</title>
+		<h:form>
+			<p:tabView>
+				<p:tab title="Cadastro de clientes">
+					<p:separator />
+					<h:panelGrid columns="4" cellpadding="10">
+						<p:outputLabel value="Nome:" />
+						<p:inputText value="#{clienteBacking.nome}" size="55"
+							placeholder="Ex: Steve Jobs" />
+
+						<p:outputLabel value="E-mail:" />
+						<p:inputText value="#{clienteBacking.email}" size="55"
+							placeholder="Ex: email@dominio.com.br" />
+
+						<p:outputLabel value="Telefone:" />
+						<p:inputMask mask="(99) 9999-9999"
+							value="#{clienteBacking.telefone}" size="55"
+							placeholder="Ex: (11) 1234-1234" />
+
+						<p:outputLabel value="Celular:" />
+						<p:inputMask mask="(99) 99999-9999"
+							value="#{clienteBacking.celular}" size="55"
+							placeholder="Ex: (11) 91234-1234" />
+
+						<p:outputLabel value="Data Nasc:" />
+						<p:calendar id="mask" mask="true" pattern="dd/MM/yyyy"
+							value="#{clienteBacking.dataNascimento}" />
+
+						<p:outputLabel value="Sexo:" />
+						<p:selectOneRadio id="sexo" value="#{clienteBacking.sexo}">
+							<f:selectItem itemLabel="Masculino" itemValue="M" />
+							<f:selectItem itemLabel="Feminino" itemValue="F" />
+						</p:selectOneRadio>
+
+					</h:panelGrid>
+
+					<p:separator />
+
+					<h:panelGrid columns="6">
+
+						<p:outputLabel value="Endereço:" />
+						<p:inputText size="70" value="#{clienteBacking.endereco}" />
+
+						<p:outputLabel value="Nº:" />
+						<p:inputText size="6" value="#{clienteBacking.numero}" />
+
+						<p:outputLabel value="Complemento" />
+						<p:inputText size="29" value="#{clienteBacking.complemento}" />
+
+					</h:panelGrid>
+
+					<h:panelGrid columns="6">
+
+						<p:outputLabel value="CEP:" />
+						<p:inputMask mask="99.999-999" value="#{clienteBacking.cep}"
+							size="30" placeholder="Ex: 12.123-400" />
+
+						<p:outputLabel value="Cidade:" />
+						<p:selectOneMenu filter="true" size="150"
+							value="#{clienteBacking.cidade}">
+							<f:selectItem itemValue="" itemLabel="- Selecione a Cidade -" />
+							<f:selectItem itemValue="São Paulo" itemLabel="São Paulo" />
+							<f:selectItem itemValue="Barueri" itemLabel="Barueri" />
+							<f:selectItem itemValue="Osasco" itemLabel="Osasco" />
+							<f:selectItem itemValue="Sorocaba" itemLabel="Sorocaba" />
+							<f:selectItem itemValue="Jandira" itemLabel="Jandira" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Estado:" />
+						<p:selectOneMenu filter="true" size="50"
+							value="#{clienteBacking.estado}">
+							<f:selectItem itemValue="" itemLabel="- Selecione a Cidade -" />
+							<f:selectItem itemValue="São Paulo" itemLabel="São Paulo" />
+							<f:selectItem itemValue="Rio de Janeiro"
+								itemLabel="Rio de Janeiro" />
+							<f:selectItem itemValue="Minas Gerais" itemLabel="Minas Gerais" />
+							<f:selectItem itemValue="Paraná" itemLabel="Paraná" />
+						</p:selectOneMenu>
+
+					</h:panelGrid>
+				</p:tab>
+
+				<p:tab title="Listagem de Clientes">
+
+					<h:panelGrid columns="1">
+
+						<p:dataTable value="">
+
+							<p:column headerText="Código">
+								<h:outputText value="1" />
+								<br />
+								<h:outputText value="2" />
+								<br />
+								<h:outputText value="3" />
+								<br />
+								<h:outputText value="4" />
+								<br />
+								<h:outputText value="5" />
+								<br />
+							</p:column>
+
+							<p:column headerText="Nome">
+								<h:outputText value="João" />
+								<br />
+								<h:outputText value="Carlos" />
+								<br />
+								<h:outputText value="Araujo" />
+								<br />
+								<h:outputText value="Santos" />
+								<br />
+								<h:outputText value="Pablo" />
+								<br />
+							</p:column>
+
+							<p:column headerText="Telefone">
+								<h:outputText value="(11) 94761-4880" />
+								<br />
+								<h:outputText value="(11) 94761-4881" />
+								<br />
+								<h:outputText value="(11) 94761-4882" />
+								<br />
+								<h:outputText value="(11) 94761-4883" />
+								<br />
+								<h:outputText value="(11) 94761-4884" />
+								<br />
+							</p:column>
+
+							<p:column headerText="Data Nasc">
+								<h:outputText value="10/01/2000" />
+								<br />
+								<h:outputText value="10/01/2001" />
+								<br />
+								<h:outputText value="10/01/2002" />
+								<br />
+								<h:outputText value="10/01/2003" />
+								<br />
+								<h:outputText value="10/01/2004" />
+								<br />
+							</p:column>
+
+
+						</p:dataTable>
+
+					</h:panelGrid>
+
+				</p:tab>
+
+
+				<p:tab title="Anotações sobre o cliente">
+
+					<h:panelGrid columns="1" cellpadding="1">
+
+						<p:editor />
+
+					</h:panelGrid>
+
+				</p:tab>
+
+			</p:tabView>
+
+			<p:panelGrid style="border:0px">
+
+				<p:commandButton value="Salvar" action="#{clienteBacking.salvar}"/>
+				<p:commandButton value="Editar" />
+				<p:commandButton value="Excluir" />
+				<p:commandButton value="Novo" />
+				<p:commandButton value="Cancelar" />
+
+			</p:panelGrid>
+
+		</h:form>
+
+
+	</ui:define>
+</ui:composition>

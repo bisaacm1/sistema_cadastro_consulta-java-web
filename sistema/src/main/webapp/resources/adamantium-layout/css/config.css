@@ -1,0 +1,11 @@
+@charset "ISO-8859-1";
+
+
+.footer{
+	background: #795238;
+}
+
+.backgroundRelatorios{
+	background-image: url("https://site.suasvendas.com/empresa/wp-content/uploads/sites/8/2019/03/icon-boletos-financeiro.svg");
+	background-size: 115%;
+}

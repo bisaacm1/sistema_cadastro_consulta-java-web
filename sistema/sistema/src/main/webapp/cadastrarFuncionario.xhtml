@@ -1,0 +1,141 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="corpo">
+
+		<title>Cadastro de Funcionario</title>
+
+		<h:form>
+
+			<p:tabView>
+
+				<p:tab title="Cadastro de Funcionario">
+
+					<p:separator />
+
+					<h:panelGrid columns="4" cellpadding="10">
+
+						<p:outputLabel value="Nome:" />
+						<p:inputText value="#{funcionarioBacking.nome}" size="40"
+							placeholder="Ex: Isaac Batista Maciel" />
+
+						<p:outputLabel value="RG:" />
+						<p:inputMask mask="99.999.999" value="#{funcionarioBacking.rg}"
+							size="40" placeholder="11.321.456" />
+
+						<p:outputLabel value="CPF:" />
+						<p:inputMask mask="999.999.999-99" value="#{funcionarioBacking.cpf}"
+							size="40" placeholder="111.321.456-11" />
+
+						<p:outputLabel value="Data Nasc:" />
+						<p:calendar id="mask" mask="true" pattern="dd/MM/yyyy"
+							value="#{funcionarioBacking.dataNascimento}" size="40" placeholder="23/02/2003"/>
+
+						<p:outputLabel value="Endereço:" />
+						<p:inputText value="#{funcionarioBacking.endereco}" size="40"
+							placeholder="Ex: Rua Oslindo de Oliveira" />
+
+						<p:outputLabel value="Numero:" />
+						<p:inputMask value="#{funcionarioBacking.numero}" size="40"
+							placeholder="35" />
+
+						<p:outputLabel value="Complemento:" />
+						<p:inputText value="#{funcionarioBacking.complemento}" size="40"
+							placeholder="Ex: Casa 2" />
+
+						<p:outputLabel value="Bairro:" />
+						<p:inputText value="#{funcionarioBacking.bairro}" size="40"
+							placeholder="Ex: Quitaúna" />
+
+						<p:outputLabel value="Cidade:" />
+						<p:selectOneMenu filter="true" size="140"
+							value="#{funcionarioBacking.cidade}">
+							<f:selectItem itemValue="" itemLabel="- Selecione Cidade-" />
+							<f:selectItem itemValue="São Paulo" itemLabel="São Paulo" />
+							<f:selectItem itemValue="Barueri" itemLabel="Barueri" />
+							<f:selectItem itemValue="Osasco" itemLabel="Osasco" />
+							<f:selectItem itemValue="Sorocaba" itemLabel="Sorocaba" />
+							<f:selectItem itemValue="Jandira" itemLabel="Jandira" />
+							<f:selectItem itemValue="Barueri" itemLabel="Barueri" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Estado" />
+						<p:selectOneMenu filter="true" size="40"
+							value="#{funcionarioBacking.estado}">
+							<f:selectItem itemValue="" itemLabel="- Selecione Estado-" />
+							<f:selectItem itemValue="São Paulo" itemLabel="São Paulo" />
+							<f:selectItem itemValue="Barueri" itemLabel="Barueri" />
+							<f:selectItem itemValue="Osasco" itemLabel="Osasco" />
+							<f:selectItem itemValue="Sorocaba" itemLabel="Sorocaba" />
+							<f:selectItem itemValue="Jandira" itemLabel="Jandira" />
+							<f:selectItem itemValue="Barueri" itemLabel="Barueri" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="CEP:" />
+						<p:inputMask mask="999.999-99" value="#{funcionarioBacking.cep}"
+							size="40" placeholder="111.321-11" />
+
+						<p:outputLabel value="Telefone:" />
+						<p:inputMask mask="(99) 9999-9999"
+							value="#{funcionarioBacking.telefone}" size="40"
+							placeholder="Ex: (11) 9464-9985" />
+
+						<p:outputLabel value="Celular:" />
+						<p:inputMask mask="(99) 99999-9999"
+							value="#{funcionarioBacking.celular}" size="40"
+							placeholder="Ex: (11) 94643-9985" />
+
+						<p:outputLabel value="E-mail:" />
+						<p:inputText value="#{funcionarioBacking.email}" size="40"
+							placeholder="Ex: email@dominio.com.br" />
+
+
+
+
+					</h:panelGrid>
+				</p:tab>
+
+				<p:tab title="Anotações sobre o funcionario">
+
+					<h:panelGrid columns="1" cellpadding="1">
+						<p:editor />
+
+					</h:panelGrid>
+
+
+
+
+
+
+				</p:tab>
+
+			
+
+
+
+
+
+
+			</p:tabView>
+
+			<p:panelGrid style="border:0px">
+
+				<p:commandButton value="Salvar" action="#{funcionarioBacking.salvar}" />
+				
+			</p:panelGrid>
+
+
+		</h:form>
+
+
+
+
+
+
+
+	</ui:define>
+
+</ui:composition>

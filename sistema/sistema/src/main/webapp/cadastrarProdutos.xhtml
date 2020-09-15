@@ -1,0 +1,73 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/WEB-INF/template.xhtml">
+
+	<ui:define name="corpo">
+
+		<title>Cadastro de produtos</title>
+
+		<h:form>
+
+			<p:tabView>
+
+				<p:tab title="Cadastro de produtos">
+
+					<p:separator />
+					<center>
+						<h:panelGrid columns="1" cellpadding="10">
+
+							<p:outputLabel value="Nome do Produto:" />
+							<p:inputText value="#{produtosBacking.descricao}" size="60"
+								placeholder="Ex: Bola" />
+
+							<p:outputLabel value="Valor do Produto:" />
+							<p:inputText value="#{produtosBacking.valorProduto}" size="60"
+								placeholder="Ex: 11.50" />
+
+						</h:panelGrid>
+					</center>
+				</p:tab>
+
+				<p:tab title="Anotações sobre o produtos">
+
+					<h:panelGrid columns="1" cellpadding="1">
+						<p:editor />
+
+					</h:panelGrid>
+
+
+
+
+
+
+				</p:tab>
+
+
+
+
+
+
+
+
+			</p:tabView>
+
+			<p:panelGrid style="border:0px">
+
+				<p:commandButton value="Salvar" action="#{produtosBacking.salvar}" />
+
+			</p:panelGrid>
+
+
+		</h:form>
+
+
+
+
+
+
+
+	</ui:define>
+
+</ui:composition>
